@@ -1,0 +1,10 @@
+api_inference/
+develop_emv/
+elasticsearch-kibana-docker/
+elasticsearch-tutorial/
+log_docker/
+log_search_bottle-app/
+log_search_nginx/
+nutrition_docker/
+prac_terr_ansi/
+.DS_Store

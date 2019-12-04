@@ -1,0 +1,37 @@
+---
+# file: roles/setup_docker/tasks/main.yml
+# Docker, docker-composeのインストール
+# python: version2 *依存関係等注意して開発すること。
+
+# Docker
+- name: add docker gpg key #docker公式のGPG公開鍵をインストール
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add apt repository #aptリポジトリの設定
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+
+- name: install docker-ce # dockerの無償版をインストール(Community Edition)
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+# pip
+- name: install pip # pipのインストール
+  apt:
+    name: "python-pip"
+
+- name: install python-apt # --check用パッケージのインストール
+  apt:
+    name: python-apt
+    state: latest
+
+# この指示によって落ちやすい。原因見つけるべき。
+# - name: pip install docker # dockerを使うのに用いるパッケージ
+#   pip:
+#     name: docker
+#     state: latest
