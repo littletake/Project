@@ -3,3 +3,4 @@
 ## 使うもの
 - 構成管理ツール(terraform, ansible)
 - オーケストレーションツール(k3s)
+- コンテナ(docker)
