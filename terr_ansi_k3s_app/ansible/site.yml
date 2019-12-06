@@ -6,16 +6,22 @@
   roles:
     - { role: download }
 
-
 - hosts: master
 #  gather_facts: yes
   become: yes
   roles:
     - { role: k3s/master }
-    - { role: setup_docker }
+    # - { role: setup_docker }
+    - { role: setup_k3s }
 
-- hosts: node
+- hosts: worker
 #  gather_facts: yes
   become: yes
   roles:
     - { role: k3s/node }
+
+- hosts: rancher
+  become: yes
+  roles:
+    - { role: setup_docker }
+    - { role: setup_rancher }

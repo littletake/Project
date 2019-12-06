@@ -49,5 +49,5 @@ resource "aws_security_group" "ansible_k3s_sg"{
   protocol   = "-1"
   cidr_blocks = ["0.0.0.0/0"]
   }
-  description = "allow tcp 22, 449, 8080 and 8088 "
+  description = "allow tcp 22, 449, 8080, 8088 and 31656 "
 }

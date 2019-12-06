@@ -1,0 +1,17 @@
+# k3s内のネットワーク
+# type : NodePort
+
+apiVersion: v1 # 設定ファイルのバージョン
+kind: Service # 設定ファイルの種類
+metadata: # 名前とか
+  name: sample-lb
+spec: # 設定部分
+  type: NodePort # serviceの種類（"IncludeIP", "NodePort"など）
+  ports: # ポートの設定（terraform使う場合は指定すること。詳細は参考サイト）
+    - name: "http-port"
+      protocol: "TCP"
+      port: 8080
+      targetPort: 80
+      nodePort: 31656
+  selector: # "deployment.yml"のラベルに合わせる。
+    app: sample-app

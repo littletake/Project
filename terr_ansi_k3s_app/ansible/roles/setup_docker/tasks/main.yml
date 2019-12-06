@@ -1,7 +1,7 @@
 ---
 # file: roles/setup_docker/tasks/main.yml
-# Docker, docker-composeのインストール
-# python: version2 *依存関係等注意して開発すること。
+# Dockerのインストール
+# python: version3 *依存関係等注意して開発すること。
 
 # Docker
 - name: add docker gpg key #docker公式のGPG公開鍵をインストール
@@ -21,17 +21,15 @@
     update_cache: yes
 
 # pip
-- name: install pip # pipのインストール
+- name: install pip3 # pipのインストール
   apt:
-    name: "python-pip"
+    name: "python3-pip"
 
 - name: install python-apt # --check用パッケージのインストール
   apt:
     name: python-apt
     state: latest
 
-# この指示によって落ちやすい。原因見つけるべき。
-# - name: pip install docker # dockerを使うのに用いるパッケージ
-#   pip:
-#     name: docker
-#     state: latest
+- name: pip install docker # dockerを使うのに用いるパッケージ
+  pip:
+    name: docker

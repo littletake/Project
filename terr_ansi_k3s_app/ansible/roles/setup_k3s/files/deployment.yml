@@ -1,0 +1,22 @@
+# k3s内で起動するアプリ
+# app : nginx
+
+apiVersion: apps/v1 # 設定ファイルのバージョン
+kind: Deployment # 設定ファイルの種類（service.ymlならService）
+metadata: # 名前とか
+  name: sample-deployment
+spec: # podsの設定とか書く中心的な部分
+  replicas: 3 # podsの数
+  selector: # この機能全体のラベル
+    matchLabels:
+      app: sample-app
+  template: # 具体的にアプリの設定を書くところ
+    metadata:
+      labels: # ラベル（上記の"matchLabels"と"service.yml.label"で統一すること）
+        app: sample-app
+    spec:
+      containers: # 含まれるコンテナ
+        - name: nginx-container
+          image: nginx:1.12
+          ports: # 繋ぐポートの設定
+            - containerPort: 80

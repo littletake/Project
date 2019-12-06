@@ -16,7 +16,7 @@ resource "aws_instance" "master" {
     Users = "haga"
   }
 }
-resource "aws_instance" "node1" {
+resource "aws_instance" "worker" {
   ami                    = "ami-09b68f5653871885f" # ubuntu18.04
   instance_type          = "t3.medium"
   key_name               = "${aws_key_pair.auth.id}"
@@ -24,11 +24,11 @@ resource "aws_instance" "node1" {
     "${aws_security_group.ansible_k3s_sg.id}"
   ]
   tags                   = {
-    Name  = "node1"
+    Name  = "worker"
     Users = "haga"
   }
 }
-resource "aws_instance" "node2" {
+resource "aws_instance" "rancher" {
   ami                    = "ami-09b68f5653871885f" # ubuntu18.04
   instance_type          = "t3.medium"
   key_name               = "${aws_key_pair.auth.id}"
@@ -36,7 +36,7 @@ resource "aws_instance" "node2" {
     "${aws_security_group.ansible_k3s_sg.id}"
   ]
   tags                   = {
-    Name  = "node2"
+    Name  = "rancher"
     Users = "haga"
   }
 }

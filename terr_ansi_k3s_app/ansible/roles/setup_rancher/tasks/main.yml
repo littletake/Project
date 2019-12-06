@@ -1,0 +1,23 @@
+---
+# file: roles/setup_rancher/tasks/main.yml
+# rancherGUIの起動
+
+# build docker image
+- name: build docker
+  docker_image:
+    name: rancher/rancher
+    source: pull
+  vars:
+        ansible_python_interpreter: /usr/bin/python3
+
+# docker_container
+- name: do rancher
+  docker_container:
+    name: rancher_container
+    image: rancher/rancher
+    ports:
+      - "8080:80"
+      - "449:443"
+  vars:
+        ansible_python_interpreter: /usr/bin/python3
+

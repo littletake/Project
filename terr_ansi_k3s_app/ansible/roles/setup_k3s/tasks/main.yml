@@ -1,0 +1,12 @@
+---
+# file: roles/setup_k3s/tasks/main.yml
+# k3sの設定ファイル（deployment, service）のコピー
+
+# copy
+- name: copy files
+  copy:
+    src: files/
+    dest: /home/ubuntu/workspace/work/files
+    owner: ubuntu
+    group: ubuntu
+    mode: '0644'
