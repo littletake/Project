@@ -4,7 +4,7 @@
 apiVersion: v1 # 設定ファイルのバージョン
 kind: Service # 設定ファイルの種類
 metadata: # 名前とか
-  name: sample-lb
+  name: sample-service
 spec: # 設定部分
   type: NodePort # serviceの種類（"IncludeIP", "NodePort"など）
   ports: # ポートの設定（terraform使う場合は指定すること。詳細は参考サイト）
