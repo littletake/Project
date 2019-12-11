@@ -6,7 +6,30 @@
 - name: copy files
   copy:
     src: files/
-    dest: /home/ubuntu/workspace/work/files
+    dest: /home/ubuntu/files
     owner: ubuntu
     group: ubuntu
     mode: '0644'
+
+# k3s内の環境自動設定（途中）
+# # pip
+# - name: install pip3 # pipのインストール
+#   apt:
+#     name: "python3-pip"
+
+# # k8sを操作するためのパッケージ
+# - name: install pip
+#   pip:
+#     name: openshift
+#   vars:
+#         ansible_python_interpreter: /usr/bin/python3
+
+# - name: Create a Service object from a file
+#   k8s:
+#     state: present
+#     src: ./files/service.yml
+
+# - name: Create a Service object from a file
+#   k8s:
+#     state: present
+#     src: ./files/deployment.yml
