@@ -4,6 +4,11 @@ variable "region" {
   default = "ap-northeast-1"
 }
 
+# 更新される可能性があるので注意
+variable "ubuntu18"{
+  default = "ami-0cd744adeca97abb1"
+}
+
 variable "key_name" {
   description = "Desired name of AWS key pair"
 }

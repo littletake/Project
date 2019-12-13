@@ -17,6 +17,6 @@ spec: # podsの設定とか書く中心的な部分
     spec:
       containers: # 含まれるコンテナ
         - name: nginx-container
-          image: nginx:1.12
+          image: example/nginx:v0.1
           ports: # 繋ぐポートの設定
             - containerPort: 80

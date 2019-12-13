@@ -1,15 +1,26 @@
 ---
 # file: roles/setup_k3s/tasks/main.yml
-# k3sの設定ファイル（deployment, service）のコピー
+# k3sの設定ファイル（deployment, service）のコピーとdeployするdockerイメージの作成
 
 # copy
 - name: copy files
   copy:
     src: files/
-    dest: /home/ubuntu/files
+    dest: "{{ dockerfile_path }}"
     owner: ubuntu
     group: ubuntu
     mode: '0644'
+
+# build docker image
+- name: build nginx
+  docker_image:
+    build:
+      path: "{{ dockerfile_path }}"
+      pull: yes
+    name: example/nginx:v0.1
+    source: build
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
 # k3s内の環境自動設定（途中）
 # # pip
