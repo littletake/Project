@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "master" {
-  ami                    = "${var.ubuntu18}" # ubuntu18.04
+  ami                    = "${var.ubuntu["ubuntu18"]}" # ubuntu18.04
   instance_type          = "t3.medium"
   key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = [
@@ -17,7 +17,7 @@ resource "aws_instance" "master" {
   }
 }
 resource "aws_instance" "worker" {
-  ami                    = "${var.ubuntu18}" # ubuntu18.04
+  ami                    = "${var.ubuntu["ubuntu18"]}" # ubuntu18.04
   instance_type          = "t3.medium"
   key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = [
@@ -29,7 +29,7 @@ resource "aws_instance" "worker" {
   }
 }
 resource "aws_instance" "rancher" {
-  ami                    = "${var.ubuntu18}" # ubuntu18.04
+  ami                    = "${var.ubuntu["ubuntu18"]}" # ubuntu18.04
   instance_type          = "t3.medium"
   key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = [

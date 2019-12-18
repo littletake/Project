@@ -12,6 +12,7 @@
   roles:
     - { role: k3s/master }
     - { role: setup_docker }
+    - { role: setup_registry }
     - { role: setup_k3s }
 
 - hosts: worker

@@ -5,8 +5,12 @@ variable "region" {
 }
 
 # 更新される可能性があるので注意
-variable "ubuntu18"{
-  default = "ami-0cd744adeca97abb1"
+variable "ubuntu"{
+  type = "map"
+  default = {
+    "ubuntu18" = "ami-0cd744adeca97abb1" # ubuntu18.04
+    "ubuntu16" = "ami-0f9af249e7fa6f61b" # ubuntu16.04
+  }
 }
 
 variable "key_name" {
