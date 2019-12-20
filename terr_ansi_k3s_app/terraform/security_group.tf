@@ -20,6 +20,7 @@ resource "aws_security_group" "ansible_k3s_sg"{
   to_port    = 8080
   protocol   = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
+  ipv6_cidr_blocks = ["::/0"]
   }
   # k3sの連携のため
   ingress{

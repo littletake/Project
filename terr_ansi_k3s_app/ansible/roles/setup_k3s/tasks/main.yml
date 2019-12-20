@@ -12,12 +12,12 @@
     mode: '0644'
 
 # build docker_image
-- name: build nginx
+- name: build docker_image of renom 
   docker_image:
     build:
       path: "{{ dockerfile_path }}"
       pull: yes
-    name: example/nginx
+    name: test/renom
     source: build
   vars:
     ansible_python_interpreter: /usr/bin/python3
@@ -25,8 +25,8 @@
 # push docker_image to a local repo
 - name: push an image to a local repo
   docker_image:
-    name: example/nginx
-    repository: localhost:5000/nginx
+    name: test/renom
+    repository: localhost:5000/renom
     push: yes
     source: local
   vars:

@@ -16,7 +16,7 @@ spec: # podsの設定とか書く中心的な部分
         app: sample-app
     spec:
       containers: # 含まれるコンテナ
-        - name: nginx-container
-          image: example/nginx:v0.1
+        - name: renom-container
+          image: localhost:5000/renom
           ports: # 繋ぐポートの設定
-            - containerPort: 80
+            - containerPort: 8080
