@@ -6,4 +6,5 @@ RUN pip install https://renom.jp/docs/downloads/wheels/renom_dl/ubuntu1604/pytho
 # install renom_img
 RUN pip install https://grid-devs.gitlab.io/ReNomIMG/bin/renom_img-2.3.2-cp36-cp36m-linux_x86_64.whl
 # do renom_img
-CMD renom_img
+RUN renom_img setup_example
+CMD renom_img --port 8080

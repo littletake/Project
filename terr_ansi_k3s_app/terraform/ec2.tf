@@ -15,6 +15,9 @@ resource "aws_instance" "master" {
     Name  = "master"
     Users = "haga"
   }
+  root_block_device {
+    volume_size          = 30
+  }
 }
 resource "aws_instance" "worker" {
   ami                    = "${var.ubuntu["ubuntu18"]}" # ubuntu18.04
@@ -26,6 +29,9 @@ resource "aws_instance" "worker" {
   tags                   = {
     Name  = "worker"
     Users = "haga"
+  }
+  root_block_device {
+    volume_size          = 20
   }
 }
 resource "aws_instance" "rancher" {
