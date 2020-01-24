@@ -1,5 +1,3 @@
-# できていない
-
 from flask import Flask, render_template, jsonify
 from random import *
 
@@ -8,7 +6,6 @@ app = Flask(__name__,
             template_folder = '../frontend/dist'
             )
 
-@app.route('/', defaults={'path':''})
 @app.route('/api/random')
 def random_number():
     response = {
@@ -16,8 +13,9 @@ def random_number():
     }
     return jsonify(response)
 
+@app.route('/', defaults={'path':''})
 @app.route('/<path:path>')
-def index(path):
+def catch_all(path):
     return render_template('index.html')
 
 if __name__ == "__main__":

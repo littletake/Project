@@ -1,5 +1,3 @@
-// できていない
-
 <template>
     <div>
         <p>Home page</p>
@@ -22,7 +20,7 @@ export default {
             this.randomNumber = this.getRandomFromBackend()
         },
         getRandomFromBackend () {
-            const path = 'http://localhost:5000/api/random'
+            const path = 'http://127.0.0.1:5000/api/random'
             axios.get(path)
             .then(response => {
                 this.randomNumber = response.data.randomNumber
